@@ -11,11 +11,11 @@ from t5x import partitioning
 include 't5x/configs/runs/finetune.gin'
 include 't5x/examples/t5/t5_1_1/base.gin'
 
-BATCH_SIZE = 512
+BATCH_SIZE = 2048
 MIXTURE_OR_TASK_NAME = "wmt_t2t_ende_v003"
 TASK_FEATURE_LENGTHS = {'inputs': 256, 'targets': 256}
 DROPOUT_RATE = 0.1
-TRAIN_STEPS = 1_020_000  # 1000000 pre-trained steps + 20000 fine-tuning steps.
+TRAIN_STEPS = 1_100_000  # 1000000 pre-trained steps + 20000 fine-tuning steps.
 USE_CACHED_TASKS = False
 
 INITIAL_CHECKPOINT_PATH = "gs://t5-data/pretrained_models/t5x/t5_1_1_base/checkpoint_1000000"
