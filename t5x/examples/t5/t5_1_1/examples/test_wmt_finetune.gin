@@ -51,3 +51,6 @@ seqio.Evaluator:
   logger_cls = [@seqio.PyLoggingLogger, @seqio.TensorBoardLogger, @seqio.JSONLogger]
   num_examples = 500  # Use all examples in the dataset.
   use_memory_cache = True
+
+partitioning.PjitPartitioner:
+  model_parallel_submesh = (1,1,1,1)
