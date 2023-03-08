@@ -5,6 +5,7 @@ import seqio
 import t5.data.mixtures
 from t5x import utils
 from t5x import models
+from t5x import partitioning
 
 
 include 't5x/configs/runs/finetune.gin'
