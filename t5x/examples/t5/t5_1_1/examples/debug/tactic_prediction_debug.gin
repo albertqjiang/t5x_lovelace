@@ -44,7 +44,7 @@ infer_eval/utils.DatasetConfig:
   mixture_or_task_name = %MIXTURE_OR_TASK_NAME
   task_feature_lengths = %TASK_FEATURE_LENGTHS
   split = 'validation'
-  batch_size = 256
+  batch_size = 512
   shuffle = False
   seed = 42
   pack = False
@@ -53,7 +53,7 @@ infer_eval/utils.DatasetConfig:
 
 seqio.Evaluator:
   logger_cls = [@seqio.PyLoggingLogger, @seqio.TensorBoardLogger, @seqio.JSONLogger]
-  num_examples = 500  # Use all examples in the dataset.
+  num_examples = None  # Use all examples in the dataset.
   use_memory_cache = True
 
 partitioning.PjitPartitioner:

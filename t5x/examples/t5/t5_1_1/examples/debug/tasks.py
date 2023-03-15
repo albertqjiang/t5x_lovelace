@@ -17,7 +17,7 @@ seqio.TaskRegistry.add(
     source=seqio.TFExampleDataSource(
         split_to_filepattern={
             "train": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/train.tfrecord",
-            "val": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/val.tfrecord",
+            "validation": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/val.tfrecord",
             "test": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/test.tfrecord",
         },
         feature_description={
