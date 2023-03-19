@@ -31,7 +31,8 @@ seqio.TaskRegistry.add(
         seqio.preprocessors.append_eos_after_trim,
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
-    metric_fns=[metrics.bleu, metrics.accuracy, metrics.rouge])
+    metric_fns=[metrics.bleu, metrics.accuracy, metrics.rouge]
+)
 
 seqio.TaskRegistry.add(
     "lean_tactic_prediction",
@@ -52,11 +53,11 @@ seqio.TaskRegistry.add(
         seqio.preprocessors.append_eos_after_trim,
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
-    metric_fns=[metrics.bleu, metrics.accuracy, metrics.rouge])
+    metric_fns=[metrics.bleu, metrics.accuracy, metrics.rouge]
+)
 
 
 seqio.MixtureRegistry.add(
   "isabelle_lean_even_mixture",
-  ["isabelle_tactic_prediction", "lean_tactic_prediction"],
-  default_rate=seqio.mixing_rate_num_examples
+  [("isabelle_tactic_prediction", 2357364), ("lean_tactic_prediction", 145970)]
 )
