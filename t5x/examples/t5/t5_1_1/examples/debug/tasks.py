@@ -17,7 +17,7 @@ seqio.TaskRegistry.add(
     source=seqio.TFExampleDataSource(
         split_to_filepattern={
             "train": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/isabelle/train.tfrecord",
-            "validation": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/isabelle/val.tfrecord",
+            "validation": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/isabelle/valid.tfrecord",
             "test": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/isabelle/test.tfrecord",
         },
         feature_description={
@@ -38,7 +38,7 @@ seqio.TaskRegistry.add(
     source=seqio.TFExampleDataSource(
         split_to_filepattern={
             "train": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/lean/train.tfrecord",
-            "validation": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/lean/val.tfrecord",
+            "validation": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/lean/valid.tfrecord",
             "test": "gs://n2formal-public-data-europe/albert/finetuning_data/tactic_prediction_data/lean/test.tfrecord",
         },
         feature_description={
