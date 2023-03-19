@@ -57,5 +57,6 @@ seqio.TaskRegistry.add(
 
 seqio.MixtureRegistry.add(
   "isabelle_lean_even_mixture",
-  [("isabelle_tactic_prediction", 1), ("lean_tactic_prediction", 1)]
+  ["isabelle_tactic_prediction", "lean_tactic_prediction"],
+  default_rate=seqio.mixing_rate_num_examples
 )
