@@ -20,7 +20,7 @@ natural text inputs and targets.
 """
 
 import abc
-from collections.abc import Mapping, Sequence
+from typing import Mapping, Sequence, Dict
 import enum
 import functools
 import inspect
@@ -43,6 +43,7 @@ from t5x import trainer as trainer_lib
 from t5x import utils
 from t5x.infer import _extract_tokens_and_aux_values
 from t5x.infer import _Inferences
+
 import tensorflow as tf
 import tensorflow_datasets as tfds
 
@@ -306,7 +307,7 @@ class InteractiveModel(abc.ABC):
           "Expected a single train state, but instead received a Sequence.")
     return int(self._train_state.step)
 
-  def train_step(self, examples: Sequence[Union[str, dict[str, str]]]):
+  def train_step(self, examples: Sequence[Union[str, Dict[str, str]]]):
     """Train function.
 
     Args:
@@ -329,7 +330,7 @@ class InteractiveModel(abc.ABC):
         examples=examples, preprocessors=preprocessors)
 
   def train_step_with_preprocessors(
-      self, examples: Sequence[Union[str, dict[str, str]]],
+      self, examples: Sequence[Union[str, Dict[str, str]]],
       preprocessors: Sequence[Callable[..., tf.data.Dataset]]):
     """Train function.
 
@@ -415,7 +416,7 @@ class InteractiveModel(abc.ABC):
   def infer_with_preprocessors(
       self,
       mode: InferenceType,
-      examples: Sequence[Union[str, dict[str, str]]],
+      examples: Sequence[Union[str, Dict[str, str]]],
       preprocessors: Sequence[Callable[..., tf.data.Dataset]],
       **inference_kwargs,
   ) -> _Inferences:
@@ -526,7 +527,7 @@ class InteractiveModel(abc.ABC):
     return all_inferences, all_aux_values
 
   def predict_with_aux(
-      self, examples: Sequence[Union[str, dict[str, str]]]) -> _Inferences:
+      self, examples: Sequence[Union[str, Dict[str, str]]]) -> _Inferences:
     """Predict with auxiliary values method."""
     # By default, only tokenize and append EOS.
     preprocessors = [
@@ -538,7 +539,7 @@ class InteractiveModel(abc.ABC):
         examples=examples,
         preprocessors=preprocessors)
 
-  def score(self, examples: Sequence[Union[str, dict[str,
+  def score(self, examples: Sequence[Union[str, Dict[str,
                                                      str]]]) -> Sequence[Any]:
     """Score method."""
     # By default, only tokenize and append EOS.
@@ -612,7 +613,7 @@ class InteractiveModel(abc.ABC):
 
   def evaluate(
       self,
-      examples: Sequence[Union[str, dict[str, str]]],
+      examples: Sequence[Union[str, Dict[str, str]]],
       metric_fns: Sequence[seqio.dataset_providers.MetricFnCallable],
   ) -> Mapping[Any, Any]:
     """Evaluation function.
@@ -645,7 +646,7 @@ class InteractiveModel(abc.ABC):
 
   def evaluate_with_preprocessors(
       self,
-      examples: Sequence[dict[str, str]],
+      examples: Sequence[Dict[str, str]],
       preprocessors: Sequence[Callable[..., tf.data.Dataset]],
       metric_fns: Sequence[seqio.dataset_providers.MetricFnCallable],
       postprocessor: Optional[Callable[..., Any]] = None,
@@ -823,7 +824,7 @@ class InteractiveModel(abc.ABC):
 
 
 def get_dataset_from_natural_text_examples(
-    examples: Sequence[Union[str, dict[str, str]]],
+    examples: Sequence[Union[str, Dict[str, str]]],
     preprocessors: Sequence[Callable[..., tf.data.Dataset]],
     task_feature_lengths: Mapping[str, int],
     features: Mapping[str, Any]) -> tf.data.Dataset:
@@ -1033,7 +1034,7 @@ def get_batches_from_seqio(
 def get_seqio_task_from_examples(
     task_name: str,
     interactive_model: InteractiveModel,
-    examples: Sequence[Union[str, dict[str, str]]],
+    examples: Sequence[Union[str, Dict[str, str]]],
     preprocessors: Sequence[Callable[..., tf.data.Dataset]],
     metric_fns: Optional[Sequence[
         seqio.dataset_providers.MetricFnCallable]] = None,
