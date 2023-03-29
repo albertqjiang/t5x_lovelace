@@ -13,6 +13,7 @@ DEFAULT_OUTPUT_FEATURES = {
         vocabulary=vocabulary, add_eos=True, dtype=tf.int32)
 }
 
+seqio.TaskRegistry.remove("c4_v220_span_corruption")
 seqio.TaskRegistry.add(
     "c4_v220_span_corruption",
     source=seqio.TfdsDataSource(tfds_name="c4/en:2.2.0"),
