@@ -16,6 +16,9 @@ DROPOUT_RATE = 0.0
 # BATCH_SIZE = 256
 BATCH_SIZE = 2048
 
+VOCABULARY = @seqio.SentencePieceVocabulary()
+seqio.SentencePieceVocabulary.sentencepiece_model_file = "gs://n2formal-public-data-europe/albert/tokenizer/galactica_enhanced.model"
+
 
 train_script.train:
   eval_period = 2000
