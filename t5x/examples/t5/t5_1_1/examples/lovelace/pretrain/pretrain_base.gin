@@ -1,6 +1,7 @@
 # Register necessary SeqIO Tasks/Mixtures.
 from __gin__ import dynamic_registration
 import t5.data.mixtures
+import seqio
 import __main__ as train_script
 
 import pretrain_tasks
@@ -16,7 +17,7 @@ DROPOUT_RATE = 0.0
 # BATCH_SIZE = 256
 BATCH_SIZE = 2048
 
-# VOCABULARY = @seqio.SentencePieceVocabulary()
+VOCABULARY = @seqio.SentencePieceVocabulary()
 seqio.SentencePieceVocabulary.sentencepiece_model_file = "gs://n2formal-public-data-europe/albert/tokenizer/galactica_enhanced.model"
 
 
