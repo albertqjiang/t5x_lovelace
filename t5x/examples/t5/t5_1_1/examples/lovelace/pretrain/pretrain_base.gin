@@ -3,8 +3,7 @@ from __gin__ import dynamic_registration
 import t5.data.mixtures
 import __main__ as train_script
 
-import tasks
-
+import pretrain_tasks
 
 include 't5x/examples/t5/t5_1_1/base.gin'
 include 't5x/configs/runs/pretrain.gin'
