@@ -27,7 +27,6 @@ seqio.TaskRegistry.add(
         seqio.CacheDatasetPlaceholder(),
         preprocessors.span_corruption,
         seqio.preprocessors.append_eos_after_trim,
-
     ],
     output_features=DEFAULT_OUTPUT_FEATURES,
     metric_fns=[])
