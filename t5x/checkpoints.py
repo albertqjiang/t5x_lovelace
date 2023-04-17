@@ -1055,9 +1055,10 @@ class Checkpointer(object):
     ckpt_state_dict = self._get_optimizer_state_dict(ckpt_contents,
                                                      state_transformation_fns)
 
-    if "decoder" in ckpt_state_dict["target"]:
+    if "decoder" in ckpt_state_dict["target"] and len(list(ckpt_state_dict["target"].keys())) == 1:
       ckpt_state_dict["target"] = ckpt_state_dict["target"]['decoder']
       assert "decoder" in ckpt_state_dict["state"]["param_states"]
+      assert len(list(ckpt_state_dict["state"]["param_states"].keys())) == 1
       ckpt_state_dict["state"]["param_states"] = ckpt_state_dict["state"]["param_states"]['decoder']
 
     # The state dict may contain TensorStore specs that need to be read.
