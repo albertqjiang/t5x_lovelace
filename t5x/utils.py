@@ -37,6 +37,7 @@ from flax.core import scope as flax_scope
 from flax.linen import partitioning as flax_partitioning
 import jax
 from jax._src import sharding
+from jax._src import sharding_impls
 from jax.experimental import multihost_utils
 import jax.numpy as jnp
 import numpy as np
@@ -585,7 +586,7 @@ def _get_index_mappings(device_to_idxs):
   host_to_idxs = collections.defaultdict(list)
   idx_to_devices = collections.defaultdict(list)
   for d, idx in device_to_idxs.items():
-    hashed_idx = sharding._hashed_index(idx)  # pylint: disable=protected-access
+    hashed_idx = sharding_impls.hashed_index(idx)  # pylint: disable=protected-access
     # Only need one copy of each idx, since they are unique. Need to maintain
     # original ordering though.
     if hashed_idx not in host_to_idxs[d.process_index]:
